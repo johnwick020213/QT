@@ -18,9 +18,16 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
+private:
+    void game_judge();
+    bool win();
+    void printWinner();
+    void clear();
+    void undo();
     void draw_O(QPushButton*Button);
     void draw_X(QPushButton*Button);
-    void setButton(QPushButton* b,int* state);
+    void setButton(QPushButton* b);
 
 private slots:
     void on_pushButton_clicked();
@@ -47,5 +54,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    bool flag=true;
+    QStack<QPushButton*> s;
 };
 #endif // MAINWINDOW_H

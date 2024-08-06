@@ -73,10 +73,10 @@ public:
         pushButton_9->setGeometry(QRect(130, 250, 91, 91));
         pushButton_10 = new QPushButton(centralwidget);
         pushButton_10->setObjectName(QString::fromUtf8("pushButton_10"));
-        pushButton_10->setGeometry(QRect(150, 370, 80, 20));
+        pushButton_10->setGeometry(QRect(150, 370, 80, 51));
         pushButton_11 = new QPushButton(centralwidget);
         pushButton_11->setObjectName(QString::fromUtf8("pushButton_11"));
-        pushButton_11->setGeometry(QRect(290, 370, 80, 20));
+        pushButton_11->setGeometry(QRect(310, 370, 80, 51));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
