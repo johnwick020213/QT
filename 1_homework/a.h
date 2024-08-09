@@ -6,62 +6,63 @@
 #include <QPushButton>
 #include <QEvent>
 #include <QDebug>
-
-
-class C : public QWidget {
+#include<QLabel>
+#include<QWidget>
+#include<QMouseEvent>
+class A:public QLabel
+{
     Q_OBJECT
 public:
-    C(QWidget *parent = nullptr) : QWidget(parent) {}
-    // 可以在这里添加额外的处理逻辑
-};
-
-class B : public QWidget {
-    Q_OBJECT
-public:
-    B(QWidget *parent = nullptr) : QWidget(parent) {}
-
-    // 重写事件过滤器
-    bool eventFilter(QObject *obj, QEvent *event) override {
-        if (event->type() == QEvent::MouseButtonPress) {
-            qDebug() << "B's eventFilter";
+    explicit A(QWidget *parent=nullptr);
+    bool event(QEvent *ev) override{
+        if(ev->type()==QEvent::MouseButtonPress){
+            qDebug()<<"event"<<objectName();
         }
-        return QWidget::eventFilter(obj, event);
+        return QLabel::event(ev);
     }
 
-    // 重写事件处理函数
-    void mousePressEvent(QMouseEvent *event) override {
-        qDebug() << "B's mousePressEvent";
-        QWidget::mousePressEvent(event);
+    void mousePressEvent(QMouseEvent *ev) override{
+        qDebug()<<"event handler"<<objectName();
+        ev->ignore();
     }
+signals:
 };
-
-class A : public QWidget {
+class B:public QLabel
+{
     Q_OBJECT
 public:
-    A(QWidget *parent = nullptr) : QWidget(parent) {
-        // 安装事件过滤器
-        installEventFilter(this->parentWidget());
-    }
-
-    // 重写事件过滤器
-    bool eventFilter(QObject *obj, QEvent *event) override {
-        if (event->type() == QEvent::MouseButtonPress) {
-            qDebug() << "A's eventFilter";
+    explicit B(QWidget *parent=nullptr);
+    bool event(QEvent *ev) override{
+        if(ev->type()==QEvent::MouseButtonPress){
+            qDebug()<<"event"<<objectName();
+            return true;
         }
-        return QWidget::eventFilter(obj, event);
+        return QLabel::event(ev);
     }
 
-    // 重写事件处理函数
-    void mousePressEvent(QMouseEvent *event) override {
-        qDebug() << "A's mousePressEvent";
-        QWidget::mousePressEvent(event);
+    void mousePressEvent(QMouseEvent *ev) override{
+        qDebug()<<"event handler"<<objectName();
+        ev->ignore();
     }
-
-    // 处理事件处理函数
-    void eventHandler() {
-        qDebug() << "A's eventHandler";
-    }
+signals:
 };
+class C:public QLabel
+{
+    Q_OBJECT
+public:
+    explicit C(QWidget *parent=nullptr);
+    bool event(QEvent *ev) override{
+        if(ev->type()==QEvent::MouseButtonPress){
+            qDebug()<<"event"<<objectName();
+        }
+        return QLabel::event(ev);
+    }
 
+    void mousePressEvent(QMouseEvent *ev) override{
+        qDebug()<<"event handler"<<objectName();
+        ev->ignore();
+    }
+signals:
+};
 
 #endif // A_H

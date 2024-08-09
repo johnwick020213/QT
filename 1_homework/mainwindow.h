@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include"a.h"
+#include"myfilter.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,5 +19,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    A* a;
+    B* b;
+    C* c;
+    myfilter* filter;
 };
 #endif // MAINWINDOW_H

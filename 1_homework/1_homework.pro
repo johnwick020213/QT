@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     a.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    myfilter.cpp
 
 HEADERS += \
     a.h \
-    mainwindow.h
+    mainwindow.h \
+    myfilter.h
 
 FORMS += \
     mainwindow.ui
